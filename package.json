@@ -1,0 +1,22 @@
+{
+  "name": "gambio.game",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3",
+    "vite": "^7.1.6"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "phaser": "^3.90.0",
+    "phaser3-rex-plugins": "^1.80.16",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
+  }
+}
