@@ -1,54 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Gambio</title>
-  <style>
-    /* Basic reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    html, body {
-      height: 100%;
-      overflow: hidden;
-      background-color: #111;
-      font-family: monospace, sans-serif;
-      color: white;
-    }
-    
-    /* ✅ NEW: Main wrapper using Flexbox */
-    #app-wrapper {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
-      padding: 20px; /* This creates the border/margin around everything */
-    }
-
-    /* ✅ NEW: Scoreboard on the left side */
-    #scoreboard {
-      width: 200px;
-      padding: 10px;
-      font-size: 18px;
-      line-height: 1.5;
-    }
-
-    /* ✅ NEW: Game container takes up the remaining space */
-    #game-container {
-      flex-grow: 1; /* Allows the game to fill the available space */
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gambio</title>
+    <style>
+        body { margin: 0; padding: 0; background-color: #000; }
+        #game-container { width: 100vw; height: 100vh; }
+    </style>
 </head>
 <body>
-  
-  <div id="app-wrapper">
-    <div id="scoreboard"></div>
-    
     <div id="game-container"></div>
-  </div>
-  
-  <script type="module" src="/src/main.ts"></script>
+    <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

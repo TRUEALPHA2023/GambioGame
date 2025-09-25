@@ -1,47 +1,64 @@
-// src/game/Deck.ts
+// Deck.ts
 
-// ✅ SIMPLIFIED IMPORT: We only need to import the Card class itself.
-import Card from './Card';
+import Card, { SUITS, RANKS } from './Card';
 
 export default class Deck {
     private cards: Card[] = [];
 
     constructor() {
         this.buildDeck();
+        this.shuffle();
     }
 
-    private buildDeck() {
+    /**
+     * Creates a standard 52-card deck.
+     */
+    private buildDeck(): void {
         this.cards = [];
-        // ✅ USAGE: We now iterate over the static properties of the Card class.
-        // This is much cleaner and avoids potential import/export errors.
-        for (const suit of Card.SUITS) {
-            for (const rank of Card.RANKS) {
+        for (const suit of SUITS) {
+            for (const rank of RANKS) {
                 this.cards.push(new Card(suit, rank));
             }
         }
     }
 
-    shuffle(): void {
-        // Fisher-Yates shuffle algorithm
+    /**
+     * Shuffles the deck using the Fisher-Yates (aka Knuth) shuffle algorithm.
+     * This ensures a random and fair distribution of cards.
+     */
+    public shuffle(): void {
         for (let i = this.cards.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
         }
     }
 
-    draw(): Card | undefined {
+    /**
+     * Draws a single card from the top of the deck.
+     * Returns undefined if the deck is empty.
+     */
+    public draw(): Card | undefined {
         return this.cards.pop();
     }
 
-    drawMany(n: number): Card[] {
-        const drawn: Card[] = [];
-        for (let i = 0; i < n && this.size() > 0; i++) {
-            drawn.push(this.draw()!);
+    /**
+     * Draws a specified number of cards from the deck.
+     */
+    public drawMany(count: number): Card[] {
+        const drawnCards: Card[] = [];
+        for (let i = 0; i < count; i++) {
+            const card = this.draw();
+            if (card) {
+                drawnCards.push(card);
+            }
         }
-        return drawn;
+        return drawnCards;
     }
 
-    size(): number {
+    /**
+     * Returns the number of cards remaining in the deck.
+     */
+    public size(): number {
         return this.cards.length;
     }
 }
